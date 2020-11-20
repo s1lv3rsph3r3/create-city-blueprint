@@ -1,0 +1,22 @@
+{
+  "name": "create-city-blueprint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "create-city-blueprint": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://s1lv3rsph3r3@github.com/s1lv3rsph3r3/create-city-blueprint.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/s1lv3rsph3r3/create-city-blueprint/issues"
+  },
+  "homepage": "https://github.com/s1lv3rsph3r3/create-city-blueprint#readme"
+}
