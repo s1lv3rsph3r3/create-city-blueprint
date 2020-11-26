@@ -1,5 +1,5 @@
 {
-  "name": "1",
+  "name": "create-city-blueprint",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "1": "./index.js"
+    "create-city-blueprint": "./index.js"
   },
   "repository": {
     "type": "git",
