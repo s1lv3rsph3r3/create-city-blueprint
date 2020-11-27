@@ -13,10 +13,14 @@
     "type": "git",
     "url": "git+https://s1lv3rsph3r3@github.com/s1lv3rsph3r3/create-city-blueprint.git"
   },
-  "author": "",
+  "author": "Timothy Rawlins",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/s1lv3rsph3r3/create-city-blueprint/issues"
   },
-  "homepage": "https://github.com/s1lv3rsph3r3/create-city-blueprint#readme"
+  "homepage": "https://github.com/s1lv3rsph3r3/create-city-blueprint#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^6.2.0"
+  }
 }
