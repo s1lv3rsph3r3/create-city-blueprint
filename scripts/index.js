@@ -4,7 +4,7 @@ const path = require('path');
 const commander = require('commander');
 const chalk = require('chalk');
 const packageJson = require('../package.json');
-const src = './src';
+const src = '../src';
 
 const currentNodeVersion = process.versions.node;
 const scriptName = 'Create City Blueprint';
