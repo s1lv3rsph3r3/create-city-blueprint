@@ -2,12 +2,12 @@
   "name": "create-city-blueprint",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "scripts/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "create-city-blueprint": "./index.js"
+    "create-city-blueprint": "scripts/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,16 @@
   },
   "homepage": "https://github.com/s1lv3rsph3r3/create-city-blueprint#readme",
   "dependencies": {
+    "@s1lv3rsph3r3/metropolitan": "^1.0.29",
+    "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
-    "commander": "^6.2.0"
+    "cli-table3": "^0.6.0",
+    "colors": "^1.4.0",
+    "commander": "^6.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-list-endpoints": "^5.0.0",
+    "mysql": "^2.18.1",
+    "redis": "^3.0.2"
   }
 }

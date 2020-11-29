@@ -3,7 +3,7 @@ const shell = require('child_process').execSync;
 const path = require('path');
 const commander = require('commander');
 const chalk = require('chalk');
-const packageJson = require('./package.json');
+const packageJson = require('../package.json');
 const src = './src';
 
 const currentNodeVersion = process.versions.node;

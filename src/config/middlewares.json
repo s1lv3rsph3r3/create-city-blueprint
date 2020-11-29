@@ -1,0 +1,11 @@
+{
+  "app" : {
+    "ExampleMiddlewareProvider" : [
+      "example"
+    ],
+    "DefaultMiddlewareProvider" : [
+      "authenticateConsole"
+    ]
+  },
+  "rootDir" : "./globalMiddlewareProviders"
+}
