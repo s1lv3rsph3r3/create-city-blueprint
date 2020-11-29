@@ -57,7 +57,7 @@ console.log(
     `Created ${chalk.green(`${rootDir}`)} without error.`
 );
 try{
-    shell(`cp -r ${src}/* "${rootDir}"`);
+    shell(`cp -r ${src} "${rootDir}"`);
 } catch (e) {
     console.error(
         `${chalk.bgRed('ERR')}: while attempting to setup framework.`
