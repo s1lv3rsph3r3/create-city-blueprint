@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/s1lv3rsph3r3/create-city-blueprint#readme",
   "dependencies": {
-    "@s1lv3rsph3r3/metropolitan": "^1.0.29",
+    "@s1lv3rsph3r3/metropolitan": "1.0.30",
     "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
     "cli-table3": "^0.6.0",
