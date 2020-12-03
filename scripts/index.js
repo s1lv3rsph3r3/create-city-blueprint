@@ -101,7 +101,13 @@ function shCommand(cmd) {
     // Create an empty .env file
     await fs.writeFileSync(`${rootDir}/.env`, finalString);
 
-    // TODO: Implement updates to the package.json
+    // Create the .gitignore file
+    await shCommand(`mv "${rootDir}/.gitignore.example" "${rootDir}/.gitignore"`).then(() => {
+        console.log('.gitignore created successfully');
+    }).catch((err) => {
+        console.error('.gitignore failed to be created');
+    });
+
     // Check that we have a package.json
     let projectPackageJson;
     try{
@@ -169,7 +175,6 @@ function shCommand(cmd) {
         }
     }
 
-    // TODO: Also install necessary devDependencies
     if((projectPackageJson['devDependencies'] === null || projectPackageJson['devDependencies'] === undefined)){
         if(packageJson['devDependencies'] === null || packageJson['devDependencies'] === undefined){
             // then we just set an empty object
