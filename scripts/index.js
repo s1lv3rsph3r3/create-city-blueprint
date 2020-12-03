@@ -152,7 +152,9 @@ function shCommand(cmd) {
                     && projectPackageJson.dependencies[item] !== undefined
                     && projectPackageJson.dependencies[item] !== packageJson.dependencies[item]
                 ){
-                    console.log('There is a versioning error');
+                    console.log(
+                        `Versioning Problem: ${item} ${packageJson.dependencies[item]} does not match current project dependency version ${item} ${projectPackageJson.dependencies[item]}`
+                    );
                 } else if (
                     projectPackageJson.dependencies[item] !== null
                     && projectPackageJson.dependencies[item] !== undefined
@@ -168,32 +170,54 @@ function shCommand(cmd) {
     }
 
     // TODO: Also install necessary devDependencies
-    // check that the devDependencies exist
-    // if(projectPackageJson['devDependencies'] === null || projectPackageJson['devDependencies'] === undefined){
-    //     if(packageJson['devDependencies'] === null || packageJson['devDependencies'] === undefined){
-    //         // then we just set an empty object
-    //     } else {
-    //         projectPackageJson['devDependencies'] = cloneDeep(packageJson.devDependencies);
-    //     }
-    // } else {
-    //     if(packageJson['devDependencies'] === null || packageJson['devDependencies'] === undefined){
-    //         // then we just take the project package json - do nothing
-    //     } else {
-    //         // Which values do we take?
-    //     }
-    // }
+    if((projectPackageJson['devDependencies'] === null || projectPackageJson['devDependencies'] === undefined)){
+        if(packageJson['devDependencies'] === null || packageJson['devDependencies'] === undefined){
+            // then we just set an empty object
+            projectPackageJson['devDependencies'] = {};
+        } else {
+            projectPackageJson['devDependencies'] = cloneDeep(packageJson.devDependencies);
+        }
+    }else{
+        if(packageJson['devDependencies'] === null || packageJson['devDependencies'] === undefined){
+            // then we just take the project package json - do nothing
+        } else {
+            const packageJsonDevDependencies = Object.keys(packageJson.devDependencies);
+            packageJsonDevDependencies.forEach((item) => {
+                if(
+                    projectPackageJson.devDependencies[item] !== null
+                    && projectPackageJson.devDependencies[item] !== undefined
+                    && projectPackageJson.devDependencies[item] !== packageJson.devDependencies[item]
+                ){
+                    console.log(
+                        `Versioning Problem: ${item} ${packageJson.devDependencies[item]} does not match current project dependency version ${item} ${projectPackageJson.devDependencies[item]}`
+                    );
+                } else if (
+                    projectPackageJson.devDependencies[item] !== null
+                    && projectPackageJson.devDependencies[item] !== undefined
+                    && projectPackageJson.devDependencies[item] === packageJson.devDependencies[item]
+                ){
+                    console.log(`${item} already exists with the correct version - ${packageJson.devDependencies[item]}`);
+                } else {
+                    console.log('Package json needs updating');
+                    projectPackageJson.devDependencies[item] = packageJson.devDependencies[item];
+                }
+            });
+        }
+    }
 
-    // TODO: flush the package json to file
+    // Flush the package.json to file
     await fs.writeFileSync(`${rootDir}/package.json`, JSON.stringify(projectPackageJson, null, 2));
 
-    // TODO: run npm install
+    // NPM install all dependencies required for this project
     await shCommand(`cd "${rootDir}" && npm install`).then(() => {
         // successfully installed the project
+        console.log('Finished install of all dependencies');
     }).catch((err) => {
         // failed to create a default package json file
         console.log(err);
 
         // failed to install the project - problems
+        console.error('Failed to run NPM install - check versioning in package.json')
 
         // Don't continue if the package.json doesn't exist
         process.exit(1);
