@@ -210,6 +210,12 @@ function shCommand(cmd) {
         }
     }
 
+    // update the scripts
+    projectPackageJson['scripts'] = {
+        "test": "jest",
+        "start": "node index.js"
+    }
+
     // Flush the package.json to file
     await fs.writeFileSync(`${rootDir}/package.json`, JSON.stringify(projectPackageJson, null, 2));
 
