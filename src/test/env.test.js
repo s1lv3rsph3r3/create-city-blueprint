@@ -32,7 +32,7 @@ describe('Test the environment is setup with the correct variables...', () => {
     expect(typeof (environment.getVariables())).toEqual('object');
   });
   test('should expect getVariables object to be of size 11', () => {
-    expect(Object.keys(environment.getVariables()).length).toEqual(10);
+    expect(Object.keys(environment.getVariables()).length).toEqual(2);
   });
   test('should expect the getVariables keys to include expected list', () => {
     expect(Object.keys(environment.getVariables())).toEqual(expectedArrayOfKeys);
